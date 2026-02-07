@@ -1,5 +1,41 @@
-<!-- start custom head snippets -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
+  <!-- Dynamischer Seitentitel -->
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 
-<!-- end custom head snippets -->
+  <!-- SEO Include -->
+  {% include seo.html %}
+
+  <!-- Atom / RSS Feed -->
+  {% unless site.atom_feed.hide %}
+    <link 
+      href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}" 
+      type="application/atom+xml" 
+      rel="alternate" 
+      title="{{ site.title }} Feed">
+  {% endunless %}
+
+  <!-- JavaScript Fallback / Copy Code Button -->
+  <script>
+    document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+    {% if site.enable_copy_code_button -%}
+      window.enable_copy_code_button = true;
+    {%- endif %}
+  </script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
+  </noscript>
+
+  <!-- Optional Head Scripts aus _config.yml -->
+  {% if site.head_scripts %}
+    {% for script in site.head_scripts %}
+      <script src="{{ script | relative_url }}"></script>
+    {% endfor %}
+  {% endif %}
+</head>
