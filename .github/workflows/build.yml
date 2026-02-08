@@ -19,6 +19,7 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2'
+
     - name: Setup cache for Bundler
       id: cache
       uses: actions/cache@v4
@@ -29,6 +30,10 @@ jobs:
         key: ${{ runner.os }}-bundler-${{ hashFiles('docs/Gemfile') }}
         restore-keys: |
           ${{ runner.os }}-bundler-
+
+    # 👈 Добавляем шаг, чтобы подставить актуальный _config.yaml
+    - name: Copy fresh _config.yaml
+      run: cp ./_config.yaml docs/_config.yaml
 
     - name: Install - Bundler
       env:
