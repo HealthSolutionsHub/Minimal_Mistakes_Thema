@@ -1,6 +1,8 @@
 ---
 layout: default
 ---
+{% include head/head_op %}
+
 
 <!-- Header Op с фиксированным логотипом и навигацией -->
 {% include header-op.html %}
