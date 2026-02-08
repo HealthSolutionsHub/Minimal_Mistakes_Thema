@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Dynamischer Seitentitel -->
+  <!-- Dynamischer Seitentitel --> 
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 
   <!-- SEO Include -->
@@ -16,6 +16,12 @@
       rel="alternate" 
       title="{{ site.title }} Feed">
   {% endunless %}
+
+  <!-- Favicon hier einfügen -->
+  <link rel="icon" type="image/png" href="{{ '/assets/favicon.png' | relative_url }}">
+  <!-- alternativ: .ico oder .svg -->
+  <!-- <link rel="icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}"> -->
+  <!-- <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}"> -->
 
   <!-- JavaScript Fallback / Copy Code Button -->
   <script>
